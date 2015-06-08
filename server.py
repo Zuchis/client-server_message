@@ -4,7 +4,10 @@ from thread import *
 
 HOST = '127.0.0.1'
 PORT = 8888
-answer = "U fakken w00t m8"
+answer = "a"
+lol = 10485760
+for i in range(0,lol):
+    answer += 'a'
 
 # Socket Creation
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,18 +26,22 @@ s.listen(10) #Awaits for connections in the binded host and port
 print 'Socket now listening on %s / %d' % (HOST,PORT)
 
 def clientthread(conn,addr): # This is the thread for each client
-    #conn.send('Welcome to the server!\n')
-    while True: #infinite loop to keep the thread running
+    try:
+        it = int(conn.recv(8))
+    except socket.error:
+        conn.close();
+    except ValueError:
+        conn.close();
+    print "Now sending %d messages to %s / %d" %(it,addr[0],addr[1])
+    while(it):
         try:
-            it = int(conn.recv(1024))
-        except socket.error:
-            break;
-        print "Now sending %d messages to %s / %d" %(it,addr[0],addr[1])
-        while(it):
             conn.sendall(answer)
             it -= 1
-    print "Connection ended with %s:%s" % addr
+        except socket.error:
+            break;
     conn.close()
+    #print "Connection ended with %s:%s" % addr
+    #conn.close()
 
 while 1:
     #wait to accept a connection
