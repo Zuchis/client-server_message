@@ -20,7 +20,7 @@ except socket.error , msg:
 
 print 'Socket bind complete'
 s.listen(10) #Awaits for connections in the binded host and port
-print 'Socket now listening'
+print 'Socket now listening on %s / %d' % (HOST,PORT)
 
 def clientthread(conn,addr): # This is the thread for each client
     #conn.send('Welcome to the server!\n')

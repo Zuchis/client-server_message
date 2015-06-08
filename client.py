@@ -15,6 +15,7 @@ port = 8888
 msg = 1000
 times = []
 request = "rck"
+f = open("output.txt","w")
 #connect to the server
 s.connect((host , port))
 print 'Socket Connected to ' + host + ' on port ' + str(port)
@@ -45,6 +46,8 @@ while(msg != 3500):
         print
     total /= msg
     times.append(total)
+    avrg = str(msg) + "    " + str(total) + "\n"
+    f.write(avrg)
     msg += 500
 print (times)
 s.close()
