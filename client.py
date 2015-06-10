@@ -20,7 +20,7 @@ f = open("output.txt","w")
 #s.connect((host , port))
 #print 'Socket Connected to ' + host + ' on port ' + str(port)
 
-while(msg != 10100):
+while(msg != 2100):
     msgSent = str(msg)
     try :
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -47,4 +47,3 @@ while(msg != 10100):
     f.write(avrg)
     msg += 100
 print (times)
-s.close()

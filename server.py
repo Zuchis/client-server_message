@@ -36,18 +36,16 @@ def clientthread(conn,addr): # This is the thread for each client
     while(it):
         try:
             conn.sendall(answer)
-            it -= 1
         except socket.error:
             break;
+   	it -= 1
     conn.close()
     #print "Connection ended with %s:%s" % addr
-    #conn.close()
 
 while 1:
     #wait to accept a connection
     conn, addr = s.accept()
-    #display client information
-    print 'Connected with ' + addr[0] + ':' + str(addr[1])
+    #print 'Connected with ' + addr[0] + ':' + str(addr[1])
     start_new_thread(clientthread,(conn,addr))
 
 s.close()
