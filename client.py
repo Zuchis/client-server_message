@@ -18,7 +18,7 @@ HOST = sys.argv[1]
 PORT = int(sys.argv[2])
 msg = 1000
 msgMax = int(sys.argv[3]) + 100
-lol = 50
+lol = 10
 times = []
 f = open("output.txt","w")
 #connect to the server
