@@ -9,8 +9,8 @@ if (len(sys.argv) != 4):
 HOST = sys.argv[1]
 PORT = int(sys.argv[2])
 answer = "a"
-lol = 10
-for i in range(0,lol-1):
+msg_size = 10
+for i in range(0,msg_size-1):
     answer += 'a'
 
 # Socket Creation
