@@ -2,8 +2,11 @@ import socket
 import sys
 from thread import *
 
-HOST = '127.0.0.1'
-PORT = 8888
+if (len(sys.argv) != 3):
+    print("Please enter the following parameters in order:\n The ip adress and the port")
+    sys.exit()
+HOST = sys.argv[1]
+PORT = int(sys.argv[2])
 answer = "a"
 lol = 10485760
 for i in range(0,lol):

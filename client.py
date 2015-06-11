@@ -10,9 +10,14 @@ import time
 #    sys.exit();
 
 #print 'Socket Created'
-host = "127.0.0.1"
-port = 8888
+
+if (len(sys.argv) != 4):
+    print("Please enter the following parameters in order:\n The ip adress, the port and the maximum number of messages")
+    sys.exit()
+HOST = sys.argv[1]
+PORT = int(sys.argv[2])
 msg = 1000
+msgMax = int(sys.argv[3]) + 100
 lol = 10485760
 times = []
 f = open("output.txt","w")
@@ -20,12 +25,12 @@ f = open("output.txt","w")
 #s.connect((host , port))
 #print 'Socket Connected to ' + host + ' on port ' + str(port)
 
-while(msg != 2100):
+while(msg != msgMax):
     msgSent = str(msg)
     try :
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((host , port))
-        print 'Socket Connected to ' + host + ' on port ' + str(port)
+        s.connect((HOST , PORT))
+        print 'Socket Connected to ' + HOST + ' on port ' + str(PORT)
         s.send(msgSent) # Send the number of messages to be received
     except socket.error:
         #Send failed
